@@ -13,7 +13,9 @@
         android:layout_height="wrap_content"
         android:hint="Digite Nome do Filme"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:maxLines="1"
+        android:inputType="textCapSentences"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_list"

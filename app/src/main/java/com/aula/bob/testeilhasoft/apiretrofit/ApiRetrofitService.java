@@ -10,6 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by Bob on 21/07/2017.
@@ -22,11 +23,13 @@ public interface ApiRetrofitService {
         void onSuccess(T movies);
     }
 
-    @GET("?t={movieName}&apikey=ec6483bd")
-    Call<List<MovieResults>> getFilmesByName(@Path("movieName") String movieName);
-
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
+
+    @GET("?apiKey=ec6483bd")
+    Call<MovieResults> getFilmesByName(@Query("t") String movieName);
+
+
 }

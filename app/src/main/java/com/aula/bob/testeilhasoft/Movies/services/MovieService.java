@@ -1,5 +1,8 @@
 package com.aula.bob.testeilhasoft.Movies.services;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.aula.bob.testeilhasoft.apiretrofit.ApiRetrofitService;
 
 import java.util.List;
@@ -16,24 +19,21 @@ public class MovieService {
 
     ApiRetrofitService serviceapi = ApiRetrofitService.retrofit.create(ApiRetrofitService.class);
 
-    public void moviesSearchResult(String nameMovie, final ApiRetrofitService.MoviesFutureCallback<List<MovieResults>> callback){
-        Call<List<MovieResults>> call = serviceapi.getFilmesByName(nameMovie);
-        call.enqueue(new Callback<List<MovieResults>>() {
+    public void moviesSearchResult(final Context context, String nameMovie, final ApiRetrofitService.MoviesFutureCallback<MovieResults> callback){
+        Call<MovieResults> call = serviceapi.getFilmesByName(nameMovie);
+        call.enqueue(new Callback<MovieResults>() {
             @Override
-            public void onResponse(Call<List<MovieResults>> call, Response<List<MovieResults>> response) {
+            public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
                 if (response.code() == 200){
-                    try{
-                        List<MovieResults> results = response.body();
+                        MovieResults results = response.body();
                         callback.onSuccess(results);
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
+
                 }
             }
 
             @Override
-            public void onFailure(Call<List<MovieResults>> call, Throwable t) {
-
+            public void onFailure(Call<MovieResults> call, Throwable t) {
+                Toast.makeText(context,"Failure",Toast.LENGTH_SHORT).show();
             }
         });
     }
