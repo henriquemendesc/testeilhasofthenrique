@@ -1,6 +1,7 @@
 package com.aula.bob.testeilhasoft.apiretrofit;
 
 import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
+import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
 
 import java.util.List;
 
@@ -16,10 +17,15 @@ import retrofit2.http.Path;
 
 public interface ApiRetrofitService {
 
-    @GET("?t={movieName}&apikey=ec6483bd")
-    Call<List<MovieModel>> getFilmesByName(@Path("movieName") String movieName, @Path("apiKey") String apiKey);
+    interface MoviesFutureCallback<T> {
 
-    public static final Retrofit retrofit = new Retrofit.Builder()
+        void onSuccess(T movies);
+    }
+
+    @GET("?t={movieName}&apikey=ec6483bd")
+    Call<List<MovieResults>> getFilmesByName(@Path("movieName") String movieName);
+
+    Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();

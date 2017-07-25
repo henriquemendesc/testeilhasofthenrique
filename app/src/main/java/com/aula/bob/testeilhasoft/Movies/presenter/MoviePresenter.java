@@ -2,6 +2,7 @@ package com.aula.bob.testeilhasoft.Movies.presenter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
@@ -45,5 +46,10 @@ public class MoviePresenter implements MovieView{
     @Override
     public void onLoading(boolean loading) {
 
+    }
+
+    @Override
+    public RecyclerView getRecyclerView() {
+        return null;
     }
 }

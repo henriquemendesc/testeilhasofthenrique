@@ -2,6 +2,7 @@ package com.aula.bob.testeilhasoft.Movies.views;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 
 import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
 
@@ -15,4 +16,5 @@ public interface MovieView {
 
     void openSearch(MovieModel item);
     void onLoading(boolean loading);
+    RecyclerView getRecyclerView();
 }
