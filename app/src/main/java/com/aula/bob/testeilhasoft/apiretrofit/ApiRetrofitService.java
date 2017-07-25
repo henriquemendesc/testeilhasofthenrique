@@ -22,14 +22,15 @@ public interface ApiRetrofitService {
 
         void onSuccess(T movies);
     }
-
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     @GET("?apiKey=ec6483bd")
-    Call<MovieResults> getFilmesByName(@Query("t") String movieName);
+    Call<MovieModel> getFilmesByName(@Query("t") String movieName);
+    @GET("?apiKey=ec6483bd")
+    Call<MovieResults> getFilmesBySearch(@Query("s") String movieName);
 
 
 }

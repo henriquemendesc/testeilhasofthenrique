@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MovieResults {
 
-    @SerializedName("Search")
+    @SerializedName("message")
     public List<MovieModel> movies;
 
     public MovieResults(){}

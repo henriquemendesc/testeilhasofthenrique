@@ -20,15 +20,14 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    private List<MovieModel> results;
+    private MovieModel results;
     private MoviePresenter presenter;
 
     public MovieAdapter(MoviePresenter presenter) {
-        this.results = new ArrayList<>();
         this.presenter = presenter;
     }
 
-    public void setResults(List<MovieModel> results) {
+    public void setResults(MovieModel results) {
         this.results = results;
     }
 
@@ -41,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        MovieModel filme = results.get(position);
+        MovieModel filme = results;
 
 /*        Picasso.with(viewHolder.thumbnail.getContext())
                 .load(filme.posterUrl)
@@ -53,11 +52,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return results.size();
+        return 1;
     }
 
     public MovieModel getItem(int position) {
-        return results.get(position);
+        return results;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

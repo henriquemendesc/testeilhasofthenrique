@@ -1,14 +1,17 @@
 package com.aula.bob.testeilhasoft.Movies.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
 import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
 import com.aula.bob.testeilhasoft.Movies.services.MovieService;
 import com.aula.bob.testeilhasoft.Movies.views.MovieView;
@@ -35,17 +38,15 @@ public class MoviePresenter {
     public void search(String movie){
         view.onProgress();
         String nomeFilme = view.getSearchText().getText().toString();
-        service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
+        service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieModel>() {
             @Override
-            public void onSuccess(MovieResults movie) {
-                adapter.setResults(movie.movies);
+            public void onSuccess(MovieModel movie) {
+                adapter.setResults(movie);
                 view.getRecyclerView().setAdapter(adapter);
                 view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
                 view.getRecyclerView().setHasFixedSize(true);
                 view.closeProgess();
-/*                if (movie.eq == 0) {
-                    Toast.makeText(view.getContext(), "Nenhum resultado encontrado", Toast.LENGTH_SHORT).show();
-                }*/
+                hideSoftKeyboard(view.getActivity());
             }
         });
     }
@@ -57,5 +58,17 @@ public class MoviePresenter {
                 //view.openDetails(item);
             }
         };
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            View currentFocus = activity.getCurrentFocus();
+            if (currentFocus != null) {
+                inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
