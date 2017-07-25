@@ -25,9 +25,12 @@ public class MovieService {
             @Override
             public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
                 if (response.code() == 200){
+                    try{
                         MovieResults results = response.body();
                         callback.onSuccess(results);
-
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             }
 

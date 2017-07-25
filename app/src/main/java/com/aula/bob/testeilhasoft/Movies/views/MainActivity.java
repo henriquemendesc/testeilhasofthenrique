@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
 import com.aula.bob.testeilhasoft.Movies.presenter.MovieAdapter;
 import com.aula.bob.testeilhasoft.Movies.presenter.MoviePresenter;
 import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     }
 
     @Override
-    public void openDetails(MovieResults item) {
+    public void openDetails(MovieModel item) {
 
     }
 }

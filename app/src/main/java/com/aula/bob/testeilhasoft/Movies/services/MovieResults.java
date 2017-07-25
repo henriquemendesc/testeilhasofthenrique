@@ -12,11 +12,11 @@ import java.util.List;
 public class MovieResults {
 
     @SerializedName("Search")
-    public MovieModel movies;
+    public List<MovieModel> movies;
 
     public MovieResults(){}
 
-    public MovieResults(MovieModel movies) {
+    public MovieResults(List<MovieModel> movies) {
         this.movies = movies;
     }
 }

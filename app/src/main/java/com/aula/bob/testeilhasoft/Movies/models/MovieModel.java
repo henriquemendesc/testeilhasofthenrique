@@ -1,5 +1,6 @@
 package com.aula.bob.testeilhasoft.Movies.models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -8,15 +9,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class MovieModel {
     @SerializedName("imdbID")
+    @Expose
     public String idMovie;
 
     @SerializedName("Title")
+    @Expose
     public String titleMovie;
 
     @SerializedName("Year")
+    @Expose
     public String yearMovie ;
 
     @SerializedName("Poster")
+    @Expose
     public String imgMovie;
 
     public MovieModel() {

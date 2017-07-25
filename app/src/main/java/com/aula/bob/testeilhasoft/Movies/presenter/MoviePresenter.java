@@ -1,6 +1,7 @@
 package com.aula.bob.testeilhasoft.Movies.presenter;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -37,8 +38,10 @@ public class MoviePresenter {
         service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
             @Override
             public void onSuccess(MovieResults movie) {
-                adapter.setResults(movie);
+                adapter.setResults(movie.movies);
                 view.getRecyclerView().setAdapter(adapter);
+                view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
+                view.getRecyclerView().setHasFixedSize(true);
                 view.closeProgess();
 /*                if (movie.eq == 0) {
                     Toast.makeText(view.getContext(), "Nenhum resultado encontrado", Toast.LENGTH_SHORT).show();
@@ -46,37 +49,12 @@ public class MoviePresenter {
             }
         });
     }
-/*    public TextView.OnEditorActionListener onClickDoneKeyboard() {
-        return new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    view.onProgress();
-                    String nomeFilme = view.getSearchText().getText().toString();
-                    service.moviesSearchResult(nomeFilme, new ApiRetrofitService.MoviesFutureCallback<List<MovieResults>>() {
-                        @Override
-                        public void onSuccess(List<MovieResults> movies) {
-                            adapter.setResults(movies);
-                            view.getRecyclerView().setAdapter(adapter);
-                            view.closeProgess();
-                            if (movies.size() == 0) {
-                                Toast.makeText(view.getContext(), "Nenhum resultado encontrado", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        };
-    }*/
 
-    public View.OnClickListener onCardClick(final String movieName, final MovieResults item) {
+    public View.OnClickListener onCardClick(final MovieResults item) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
-                view.openDetails(item);
+                //view.openDetails(item);
             }
         };
     }
