@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         intent.putExtra("name",movieModel.titleMovie);
         intent.putExtra("writer",movieModel.writerMovie);
         intent.putExtra("director",movieModel.directorMovie);
+        intent.putExtra("actor",movieModel.actorsMovie);
+        intent.putExtra("year",movieModel.yearMovie);
+        intent.putExtra("type",movieModel.typeMovie);
         startActivity(intent);
     }
 }

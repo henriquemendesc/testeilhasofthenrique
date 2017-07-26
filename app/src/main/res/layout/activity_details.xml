@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,121 +9,202 @@
     android:background="@color/background"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"
-        card_view:cardUseCompatPadding="true">
-
-        <ImageView
-            android:id="@+id/imgMovieDetails"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="centerCrop"
-            tools:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/txtTitleDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
-            android:background="@color/colorTranslucentBlack"
-            android:padding="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/colorWhite"
-            tools:text="Título Filme" />
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"
-        card_view:cardUseCompatPadding="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtPlotDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:background="@color/colorTranslucentBlack"
-                android:padding="10dp"
-                android:text="Sobre o filme"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/colorWhite"
-                android:textSize="12dp"
-                android:textStyle="bold" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/txtAutorDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="7dp"
-                    android:text="Autor:"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtAutorDetailsPersistence"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_toRightOf="@+id/txtAutorDetails"
-                    android:text="Autor do Filme"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:id="@+id/txtDirectorDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtAutorDetails"
-                    android:layout_marginRight="5dp"
-                    android:text="Diretor: "
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtDirectorDetailsPersistence"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtAutorDetailsPersistence"
-                    android:layout_toRightOf="@+id/txtDirectorDetails"
-                    android:text="Diretor do Filme"
-                    android:textSize="12dp" />
-            </RelativeLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnSaveMovie"
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            card_view:cardUseCompatPadding="true">
+
+            <ImageView
+                android:id="@+id/imgMovieDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                tools:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/txtTitleDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:background="@color/colorTranslucentBlack"
+                android:padding="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorWhite"
+                tools:text="Título Filme" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:elevation="5dp"
-            android:text="Salvar"
-            android:textColor="@color/colorWhite"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtPlotDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTranslucentBlack"
+                    android:padding="10dp"
+                    android:text="Sobre o filme"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/txtAutorDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="15dp"
+                        android:text="Autor:"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtAutorDetailsPersistence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toRightOf="@+id/txtAutorDetails"
+                        android:text="Autor do Filme"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtDirectorDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtAutorDetails"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="Diretor: "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDirectorDetailsPersistence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtAutorDetailsPersistence"
+                        android:layout_toRightOf="@+id/txtDirectorDetails"
+                        android:text="Diretor do Filme"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtAnoDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtDirectorDetails"
+                        android:layout_marginRight="10dp"
+                        android:text="Ano: "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtYearDetailsPersistence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/txtAnoDetails"
+                        android:layout_alignBottom="@+id/txtAnoDetails"
+                        android:layout_alignStart="@+id/txtAutorDetailsPersistence"
+                        android:layout_marginRight="15dp"
+                        android:text="Ano"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtTipoDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/txtYearDetailsPersistence"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@+id/txtYearDetailsPersistence"
+                        android:text="Tipo: "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtTypeDetailsPersistence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/txtTipoDetails"
+                        android:layout_alignBottom="@+id/txtTipoDetails"
+                        android:layout_toEndOf="@+id/txtAutorDetailsPersistence"
+                        android:text="Tipo"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtActorsDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTipoDetails"
+                        android:layout_marginRight="5dp"
+                        android:text="Atores: "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtActorsDetailsPersistence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTipoDetails"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_toRightOf="@+id/txtActorsDetails"
+                        android:text="Atores"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/btnSaveMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_click"
+                android:elevation="6dp"
+                android:gravity="center_horizontal"
+                android:padding="15dp"
+                android:text="Salvar"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

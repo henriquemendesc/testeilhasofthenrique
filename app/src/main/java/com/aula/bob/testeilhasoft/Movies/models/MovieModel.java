@@ -40,10 +40,15 @@ public class MovieModel {
     @Expose
     public String directorMovie;
 
+    @SerializedName("Actors")
+    @Expose
+    public String actorsMovie;
+
     public MovieModel() {
     }
 
-    public MovieModel(String idMovie, String titleMovie, String yearMovie, String imgMovie, String writerMovie, String plotMovie, String typeMovie, String directorMovie) {
+    public MovieModel(String idMovie, String titleMovie, String yearMovie, String imgMovie, String writerMovie, String plotMovie,
+                      String typeMovie, String directorMovie, String actorsMovie) {
         this.idMovie = idMovie;
         this.titleMovie = titleMovie;
         this.yearMovie = yearMovie;
@@ -52,6 +57,7 @@ public class MovieModel {
         this.plotMovie = plotMovie;
         this.typeMovie = typeMovie;
         this.directorMovie = directorMovie;
+        this.actorsMovie = actorsMovie;
     }
 
 }

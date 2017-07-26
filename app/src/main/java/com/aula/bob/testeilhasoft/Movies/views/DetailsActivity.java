@@ -22,6 +22,12 @@ public class DetailsActivity extends AppCompatActivity {
     TextView txtDiretor;
     @BindView(R.id.txtTitleDetails)
     TextView txtNome;
+    @BindView(R.id.txtYearDetailsPersistence)
+    TextView txtAno;
+    @BindView(R.id.txtTypeDetailsPersistence)
+    TextView txtTipo;
+    @BindView(R.id.txtActorsDetailsPersistence)
+    TextView txtAtor;
     @BindView(R.id.imgMovieDetails)
     ImageView imgFilme;
 
@@ -31,6 +37,9 @@ public class DetailsActivity extends AppCompatActivity {
     String autor;
     String nome;
     String diretor;
+    String tipo;
+    String ano;
+    String ator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +47,28 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         ButterKnife.bind(this);
+
+        initializeDetails();
+    }
+
+    private void initializeDetails() {
         Intent intent = getIntent();
+
         image = intent.getStringExtra("image");
         plot = intent.getStringExtra("plot");
         diretor = intent.getStringExtra("director");
         autor = intent.getStringExtra("autor");
         nome = intent.getStringExtra("name");
-        initializeDetails();
-    }
+        tipo = intent.getStringExtra("type");
+        ano = intent.getStringExtra("year");
+        ator = intent.getStringExtra("actor");
 
-    private void initializeDetails() {
         txtSobre.setText(plot);
         txtDiretor.setText(diretor);
         txtNome.setText(nome);
+        txtAno.setText(ano);
+        txtTipo.setText(tipo);
+        txtAtor.setText(ator);
         Picasso.with(this).load(image).into(this.imgFilme);
     }
 }
