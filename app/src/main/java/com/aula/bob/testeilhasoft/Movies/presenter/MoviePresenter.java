@@ -35,16 +35,33 @@ public class MoviePresenter {
        // view.getSearchText().setOnEditorActionListener(onClickDoneKeyboard());
     }
 
-    public void search(String movie){
+/*    public void searchByTitle(String movie){
         view.onProgress();
         String nomeFilme = view.getSearchText().getText().toString();
-        service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieModel>() {
+        service.moviesSearchByTitleResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieModel>() {
             @Override
-            public void onSuccess(MovieModel movie) {
-                adapter.setResults(movie);
+            public void onSuccess(MovieResults movie) {
+                adapter.setResults(movie.movies);
                 view.getRecyclerView().setAdapter(adapter);
                 view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
                 view.getRecyclerView().setHasFixedSize(true);
+                view.closeProgess();
+                hideSoftKeyboard(view.getActivity());
+            }
+        });
+    }*/
+
+    public void search(String movie){
+        view.onProgress();
+        String nomeFilme = view.getSearchText().getText().toString();
+        service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
+            @Override
+            public void onSuccess(MovieResults movie) {
+                adapter.setResults(movie.movies);
+
+                view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
+                view.getRecyclerView().setHasFixedSize(true);
+                view.getRecyclerView().setAdapter(adapter);
                 view.closeProgess();
                 hideSoftKeyboard(view.getActivity());
             }
