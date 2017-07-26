@@ -21,5 +21,5 @@ public interface MovieView {
     void closeProgess();
     RecyclerView getRecyclerView();
     EditText getSearchText();
-    void openDetails(MovieModel item);
+    void openDetails(MovieModel movieModel);
 }

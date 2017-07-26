@@ -3,6 +3,7 @@ package com.aula.bob.testeilhasoft.Movies.views;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     public RecyclerView getRecyclerView() {
         return (RecyclerView) findViewById(R.id.recycler_list);
     }
-
+    //leva o edittext para pesquisa para o presenter.
     @Override
     public EditText getSearchText() {
         return (EditText) findViewById(R.id.edtSearch);
@@ -90,7 +91,13 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     }
 
     @Override
-    public void openDetails(MovieModel item) {
-
+    public void openDetails(MovieModel movieModel) {
+        Intent intent = new Intent(this,DetailsActivity.class);
+        intent.putExtra("image",movieModel.imgMovie);
+        intent.putExtra("plot",movieModel.plotMovie);
+        intent.putExtra("name",movieModel.titleMovie);
+        intent.putExtra("writer",movieModel.writerMovie);
+        intent.putExtra("director",movieModel.directorMovie);
+        startActivity(intent);
     }
 }

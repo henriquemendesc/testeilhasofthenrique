@@ -34,23 +34,7 @@ public class MoviePresenter {
         service = new MovieService();
        // view.getSearchText().setOnEditorActionListener(onClickDoneKeyboard());
     }
-
-/*    public void searchByTitle(String movie){
-        view.onProgress();
-        String nomeFilme = view.getSearchText().getText().toString();
-        service.moviesSearchByTitleResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieModel>() {
-            @Override
-            public void onSuccess(MovieResults movie) {
-                adapter.setResults(movie.movies);
-                view.getRecyclerView().setAdapter(adapter);
-                view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
-                view.getRecyclerView().setHasFixedSize(true);
-                view.closeProgess();
-                hideSoftKeyboard(view.getActivity());
-            }
-        });
-    }*/
-
+    //pesquisa com a api da OMBDapi com o parametro Search, para retornar todas as possíveis respostas de acordo com o nome do filme.
     public void search(){
         view.onProgress();
         String nomeFilme = view.getSearchText().getText().toString();
@@ -67,16 +51,21 @@ public class MoviePresenter {
             }
         });
     }
-
+    //clique no card para levar à tela de detalhes do filme
     public View.OnClickListener onCardClick(final MovieModel item) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
-                Toast.makeText(view.getContext(),item.idMovie.toString(),Toast.LENGTH_SHORT).show();
+                service.moviesSearchByIdResult(view.getContext(), item.idMovie, new ApiRetrofitService.MoviesFutureCallback<MovieModel>() {
+                    @Override
+                    public void onSuccess(MovieModel movies) {
+                        view.openDetails(movies);
+                    }
+                });
             }
         };
     }
-
+    //fecha o teclado após a consulta
     public static void hideSoftKeyboard(Activity activity) {
         try {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
