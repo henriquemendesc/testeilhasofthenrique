@@ -21,8 +21,8 @@ public class MovieService {
 
     ApiRetrofitService serviceapi = ApiRetrofitClient.getRetrofitClient().create(ApiRetrofitService.class);
     //só é retornado um objeto portanto não é necessário que seja um list, pelo parametro t
-    public void moviesSearchByTitleResult(final Context context, String nameMovie, final ApiRetrofitService.MoviesFutureCallback<MovieModel> callback){
-        Call<MovieModel> call = serviceapi.getFilmesByName(nameMovie);
+    public void moviesSearchByIdResult(final Context context, String idIMDB, final ApiRetrofitService.MoviesFutureCallback<MovieModel> callback){
+        Call<MovieModel> call = serviceapi.getFilmesByID(idIMDB);
         call.enqueue(new Callback<MovieModel>() {
             @Override
             public void onResponse(Call<MovieModel> call, Response<MovieModel> response) {

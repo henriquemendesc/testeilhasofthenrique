@@ -24,14 +24,29 @@ public class MovieModel {
     @Expose
     public String imgMovie;
 
+    @SerializedName("Plot")
+    @Expose
+    public String plotMovie;
+
+    @SerializedName("Writer")
+    @Expose
+    public String writerMovie;
+
+    @SerializedName("Type")
+    @Expose
+    public String typeMovie;
+
     public MovieModel() {
     }
 
-    public MovieModel(String idMovie, String titleMovie, String yearMovie, String imgMovie) {
+    public MovieModel(String idMovie, String titleMovie, String yearMovie, String imgMovie, String writerMovie, String plotMovie, String typeMovie) {
         this.idMovie = idMovie;
         this.titleMovie = titleMovie;
         this.yearMovie = yearMovie;
-        this.idMovie = imgMovie;
+        this.imgMovie = imgMovie;
+        this.writerMovie = writerMovie;
+        this.plotMovie = plotMovie;
+        this.typeMovie = typeMovie;
     }
 
 }

@@ -24,7 +24,7 @@ public interface ApiRetrofitService {
     }
 
     @GET("?apiKey=ec6483bd")
-    Call<MovieModel> getFilmesByName(@Query("t") String movieName);
+    Call<MovieModel> getFilmesByID(@Query("i") String movieName);
     @GET("?apiKey=ec6483bd")
     Call<MovieResults> getFilmesBySearch(@Query("s") String movieName);
 

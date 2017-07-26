@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    presenter.search(edtText.getText().toString());
+                    presenter.search();
                     return true;
                 }
                 return false;

@@ -51,13 +51,13 @@ public class MoviePresenter {
         });
     }*/
 
-    public void search(String movie){
+    public void search(){
         view.onProgress();
         String nomeFilme = view.getSearchText().getText().toString();
         service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
             @Override
             public void onSuccess(MovieResults movie) {
-                adapter.setResults(movie.movies);
+                adapter.setResults(movie);
 
                 view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
                 view.getRecyclerView().setHasFixedSize(true);
@@ -68,11 +68,11 @@ public class MoviePresenter {
         });
     }
 
-    public View.OnClickListener onCardClick(final MovieResults item) {
+    public View.OnClickListener onCardClick(final MovieModel item) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
-                //view.openDetails(item);
+                Toast.makeText(view.getContext(),item.idMovie.toString(),Toast.LENGTH_SHORT).show();
             }
         };
     }
