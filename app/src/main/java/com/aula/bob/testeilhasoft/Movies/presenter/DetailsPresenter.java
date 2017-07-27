@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.aula.bob.testeilhasoft.Movies.persistence.AppDataBase;
 import com.aula.bob.testeilhasoft.Movies.persistence.Movies;
 import com.aula.bob.testeilhasoft.Movies.views.DetailsView;
+import com.aula.bob.testeilhasoft.R;
 
 /**
  * Created by Bob on 26/07/2017.
@@ -29,7 +30,7 @@ public class DetailsPresenter {
                 db = AppDataBase.getDataBase(view.getContext());
                 Movies movies = new Movies(nome,plot,imdb,"",ator,ano,tipo,diretor,autor);
                 new InsertAsyncTask(db).execute(movies);
-                Toast.makeText(view.getContext(),"Inserido com sucesso",Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), R.string.insert_success,Toast.LENGTH_SHORT).show();
                 view.getActvity().finish();
             }
         };

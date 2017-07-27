@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     public void onProgress() {
         progress = new ProgressDialog(this);
         progress.setCancelable(false);
-        progress.setTitle("Aguarde um momento....");
-        progress.setMessage("Pesquisando os filmes");
+        progress.setTitle(getString(R.string.while_progress));
+        progress.setMessage(getString(R.string.searching_progress));
         progress.show();
     }
 

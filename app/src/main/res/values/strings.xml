@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Teste Ilha Soft</string>
+    <string name="click_card">Clique no card para ver os detalhes</string>
+    <string name="insert_success">Inserido com sucesso</string>
+    <string name="while_progress">Aguarde um momento....</string>
+    <string name="searching_progress">Pesquisando os filmes</string>
+    <string name="emptymovie_cad">Não há filmes cadastrados</string>
 </resources>

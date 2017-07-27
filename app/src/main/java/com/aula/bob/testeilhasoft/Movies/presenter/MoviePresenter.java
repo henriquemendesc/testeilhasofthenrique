@@ -52,6 +52,7 @@ public class MoviePresenter {
                 view.getRecyclerView().setAdapter(adapter);
                 view.closeProgess();
                 hideSoftKeyboard(view.getActivity());
+                Toast.makeText(view.getContext(), R.string.click_card,Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -100,6 +101,7 @@ public class MoviePresenter {
                 view.getActivity().findViewById(R.id.btnCadastrados).setVisibility(View.VISIBLE);
                 view.getActivity().findViewById(R.id.btnClear).setVisibility(View.GONE);
                 adapter.clearList();
+                adapter.notifyDataSetChanged();
             }
         };
     }

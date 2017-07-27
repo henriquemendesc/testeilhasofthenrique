@@ -143,13 +143,13 @@
                         android:id="@+id/txtTipoCad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/txtYearCadPersistence"
                         android:layout_marginBottom="5dp"
                         android:layout_toEndOf="@+id/txtYearCadPersistence"
                         android:text="Tipo: "
                         android:textColor="@color/colorAccent"
                         android:textSize="14dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_alignTop="@+id/txtYearCadPersistence" />
 
                     <TextView
                         android:id="@+id/txtTypeCadPersistence"
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@+id/txtTipoCad"
                         android:layout_alignBottom="@+id/txtTipoCad"
-                        android:layout_toEndOf="@+id/txtAutorCadPersistence"
+                        android:layout_toRightOf="@+id/txtTipoCad"
                         android:text="Tipo"
                         android:textColor="@color/colorAccent"
                         android:textSize="14dp" />

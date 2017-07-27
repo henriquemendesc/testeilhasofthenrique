@@ -10,6 +10,7 @@ import com.aula.bob.testeilhasoft.Movies.persistence.Movies;
 import com.aula.bob.testeilhasoft.Movies.services.MovieService;
 import com.aula.bob.testeilhasoft.Movies.views.CadView;
 import com.aula.bob.testeilhasoft.Movies.views.MovieView;
+import com.aula.bob.testeilhasoft.R;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class CadastradosPresenter {
                     view.getRecyclerView().setAdapter(adapter);
                 }
                 else {
-                    Toast.makeText(view.getContext(),"Não há filmes cadastrados",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), R.string.emptymovie_cad,Toast.LENGTH_SHORT).show();
                     view.getActivity().finish();
                 }
             }
