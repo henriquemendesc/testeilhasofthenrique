@@ -41,7 +41,7 @@ public class MoviePresenter {
     public void search() {
         view.onProgress();
         String nomeFilme = view.getSearchText().getText().toString();
-        service.moviesSearchResult(view.getContext(), nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
+        service.moviesSearchResult(view,nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
             @Override
             public void onSuccess(MovieResults movie) {
                 view.getActivity().findViewById(R.id.btnCadastrados).setVisibility(View.GONE);

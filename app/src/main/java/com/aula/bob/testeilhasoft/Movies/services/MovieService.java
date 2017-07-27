@@ -9,6 +9,7 @@ import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
 import com.aula.bob.testeilhasoft.Movies.persistence.AppDataBase;
 import com.aula.bob.testeilhasoft.Movies.persistence.Movies;
 import com.aula.bob.testeilhasoft.Movies.presenter.MovieAdapter;
+import com.aula.bob.testeilhasoft.Movies.views.MovieView;
 import com.aula.bob.testeilhasoft.apiretrofit.ApiRetrofitClient;
 import com.aula.bob.testeilhasoft.apiretrofit.ApiRetrofitService;
 
@@ -50,15 +51,20 @@ public class MovieService {
         });
     }
 
-    public void moviesSearchResult(final Context context, String nameMovie, final ApiRetrofitService.MoviesFutureCallback<MovieResults> callback) {
+    public void moviesSearchResult(final MovieView view,String nameMovie, final ApiRetrofitService.MoviesFutureCallback<MovieResults> callback) {
         Call<MovieResults> call = serviceapi.getFilmesBySearch(nameMovie);
         call.enqueue(new Callback<MovieResults>() {
             @Override
             public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
                 if (response.code() == 200) {
                     try {
-                        MovieResults results = response.body();
-                        callback.onSuccess(results);
+                        if(response.body().movies != null) {
+                            MovieResults results = response.body();
+                            callback.onSuccess(results);
+                        }else{
+                            Toast.makeText(view.getContext(),"Não já filmes para esta consulta",Toast.LENGTH_SHORT).show();
+                            view.closeProgess();
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -67,7 +73,8 @@ public class MovieService {
 
             @Override
             public void onFailure(Call<MovieResults> call, Throwable t) {
-                Toast.makeText(context, "Failure", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "Failure", Toast.LENGTH_SHORT).show();
+                view.closeProgess();
             }
         });
     }

@@ -11,6 +11,7 @@ import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
 import com.aula.bob.testeilhasoft.Movies.persistence.Movies;
 import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
 import com.aula.bob.testeilhasoft.R;
+import com.aula.bob.testeilhasoft.utils.isOnline;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -73,6 +74,7 @@ public class CadastradosAdatper extends RecyclerView.Adapter<CadastradosAdatper.
             autorCad = (TextView) itemView.findViewById(R.id.txtAutorCadPersistence);
             diretorCad = (TextView) itemView.findViewById(R.id.txtDirectorCadPersistence);
             atorCad = (TextView) itemView.findViewById(R.id.txtActorsCadPersistence);
+            imageCad = (ImageView)itemView.findViewById(R.id.imgMovieCad);
 
         }
 
@@ -84,8 +86,11 @@ public class CadastradosAdatper extends RecyclerView.Adapter<CadastradosAdatper.
             this.posterCad.setText(item.getPlotmovie());
             this.diretorCad.setText(item.getDirectormovie());
             this.autorCad.setText(item.getWritermovie());
-
-
+            if(!item.getImagemovie().equals("") && isOnline.isOnline(itemView.getContext())) {
+                Picasso.with(itemView.getContext()).load(item.getImagemovie()).into(this.imageCad);
+            }else{
+                this.imageCad.setImageResource(R.mipmap.ic_launcher);
+            }
         }
 
         @Override

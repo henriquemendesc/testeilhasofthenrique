@@ -23,12 +23,13 @@ public class DetailsPresenter {
     }
 
     public View.OnClickListener onSaveClick(final String plot, final String diretor, final String autor,
-                                            final String nome, final String tipo, final String ano, final String ator, final String imdb) {
+                                            final String nome, final String tipo, final String ano, final String ator,
+                                            final String imdb, final String image) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
                 db = AppDataBase.getDataBase(view.getContext());
-                Movies movies = new Movies(nome,plot,imdb,"",ator,ano,tipo,diretor,autor);//imagem em branco, deve-se fazer o download e salvar o caminho na base
+                Movies movies = new Movies(nome,plot,imdb,image,ator,ano,tipo,diretor,autor);//ideal é que a imagem seja salva e retorne o caminho local
                 new InsertAsyncTask(db).execute(movies);
                 Toast.makeText(view.getContext(), R.string.insert_success,Toast.LENGTH_SHORT).show();
                 view.getActvity().finish();
