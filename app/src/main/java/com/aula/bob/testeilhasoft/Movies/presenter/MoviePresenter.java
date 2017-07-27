@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
+import com.aula.bob.testeilhasoft.Movies.persistence.AppDataBase;
 import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
 import com.aula.bob.testeilhasoft.Movies.services.MovieService;
 import com.aula.bob.testeilhasoft.Movies.views.MovieView;
@@ -76,5 +77,9 @@ public class MoviePresenter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void loadMovies(AppDataBase db) {
+        service.loadFromDB(db, adapter);
     }
 }

@@ -1,19 +1,23 @@
 package com.aula.bob.testeilhasoft.Movies.views;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
+import com.aula.bob.testeilhasoft.Movies.presenter.DetailsPresenter;
 import com.aula.bob.testeilhasoft.R;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements DetailsView{
     @BindView(R.id.txtPlotDetails)
     TextView txtSobre;
     @BindView(R.id.txtAutorDetailsPersistence)
@@ -30,6 +34,8 @@ public class DetailsActivity extends AppCompatActivity {
     TextView txtAtor;
     @BindView(R.id.imgMovieDetails)
     ImageView imgFilme;
+    @BindView(R.id.btnSaveMovie)
+    Button btnSave;
 
     MovieModel movieModel;
     String image;
@@ -40,6 +46,8 @@ public class DetailsActivity extends AppCompatActivity {
     String tipo;
     String ano;
     String ator;
+
+    DetailsPresenter presenter = new DetailsPresenter(this,this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,5 +78,17 @@ public class DetailsActivity extends AppCompatActivity {
         txtTipo.setText(tipo);
         txtAtor.setText(ator);
         Picasso.with(this).load(image).into(this.imgFilme);
+
+        btnSave.setOnClickListener(presenter.onSaveClick(plot,diretor,autor,nome,tipo,ano,ator));
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public Activity getActvity() {
+        return this;
     }
 }

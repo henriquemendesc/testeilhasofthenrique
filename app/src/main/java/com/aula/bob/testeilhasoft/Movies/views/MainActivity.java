@@ -2,6 +2,7 @@ package com.aula.bob.testeilhasoft.Movies.views;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.aula.bob.testeilhasoft.Movies.models.MovieModel;
+import com.aula.bob.testeilhasoft.Movies.persistence.AppDataBase;
 import com.aula.bob.testeilhasoft.Movies.presenter.MovieAdapter;
 import com.aula.bob.testeilhasoft.Movies.presenter.MoviePresenter;
 import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     RecyclerView recyclerView;
     ProgressDialog progress;
     private EditText edtText;
+    private AppDataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         edtText = (EditText)findViewById(R.id.edtSearch);
         edtText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         edtText.setOnEditorActionListener(searchEditListener());
+        db = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DB_NAME).build();
+        presenter.loadMovies(db);
     }
 
     private TextView.OnEditorActionListener searchEditListener() {

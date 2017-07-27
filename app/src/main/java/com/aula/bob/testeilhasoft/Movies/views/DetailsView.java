@@ -1,5 +1,6 @@
 package com.aula.bob.testeilhasoft.Movies.views;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -8,5 +9,6 @@ import android.content.Context;
 
 public interface DetailsView {
     Context getContext();
+    Activity getActvity();
 
 }
