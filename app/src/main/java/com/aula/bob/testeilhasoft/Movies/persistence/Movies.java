@@ -27,7 +27,7 @@ public class Movies {
     private String plotmovie;
 
     @ColumnInfo(name = "idimdbmovie")
-    private String idimdbmovie;
+    private String imdbmovie;
 
     @ColumnInfo(name = "imagemovie")
     private String imagemovie;
@@ -48,14 +48,13 @@ public class Movies {
     private String writermovie;
 
 
-    public Movies(long id, String titlemovie, String plotmovie,
-                  String idimdbmovie, String imagemovie, String actormovie, String yearmovie, String typemovie,
+    public Movies(String titlemovie, String plotmovie,
+                  String imdbmovie, String imagemovie, String actormovie, String yearmovie, String typemovie,
                   String directormovie, String writermovie) {
 
-        this.id = id;
         this.titlemovie = titlemovie;
         this.plotmovie = plotmovie;
-        this.idimdbmovie = idimdbmovie;
+        this.imdbmovie = imdbmovie;
         this.imagemovie = imagemovie;
         this.actormovie = actormovie;
         this.yearmovie = yearmovie;
@@ -128,12 +127,12 @@ public class Movies {
         this.writermovie = writermovie;
     }
 
-    public String getIdimdbmovie(){
-        return idimdbmovie;
+    public String getImdbmovie(){
+        return imdbmovie;
     }
 
-    public void setIdimdbmovie(String idimdbmovie){
-        this.idimdbmovie = idimdbmovie;
+    public void setImdbmovie(String imdbmovie){
+        this.imdbmovie = imdbmovie;
     }
 
     public String getImagemovie(){

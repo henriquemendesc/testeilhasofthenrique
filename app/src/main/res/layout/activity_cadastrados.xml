@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aula.bob.testeilhasoft.Movies.views.CadastradosActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_list_cad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:divider="#ffffff"
+        android:dividerHeight="0dp"
+        tools:listitem="@layout/movie_card">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

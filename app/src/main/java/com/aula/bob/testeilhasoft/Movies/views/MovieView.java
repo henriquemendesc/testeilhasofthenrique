@@ -22,4 +22,6 @@ public interface MovieView {
     RecyclerView getRecyclerView();
     EditText getSearchText();
     void openDetails(MovieModel movieModel);
+
+    void openCadastrados();
 }

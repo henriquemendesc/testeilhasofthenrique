@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     RecyclerView recyclerView;
     ProgressDialog progress;
     private EditText edtText;
+    private Button btnCadastrados;
     private AppDataBase db;
 
     @Override
@@ -38,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         edtText = (EditText)findViewById(R.id.edtSearch);
         edtText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         edtText.setOnEditorActionListener(searchEditListener());
-        db = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DB_NAME).build();
-        presenter.loadMovies(db);
+        btnCadastrados = (Button)findViewById(R.id.btnCadastrados);
+        btnCadastrados.setOnClickListener(presenter.onClickCadastrados());
     }
 
     private TextView.OnEditorActionListener searchEditListener() {
@@ -106,6 +108,13 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         intent.putExtra("actor",movieModel.actorsMovie);
         intent.putExtra("year",movieModel.yearMovie);
         intent.putExtra("type",movieModel.typeMovie);
+        intent.putExtra("imdb",movieModel.idMovie);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openCadastrados() {
+        Intent intent = new Intent(this,CadastradosActivity.class);
         startActivity(intent);
     }
 }

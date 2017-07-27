@@ -12,6 +12,7 @@ import com.aula.bob.testeilhasoft.Movies.presenter.MovieAdapter;
 import com.aula.bob.testeilhasoft.apiretrofit.ApiRetrofitClient;
 import com.aula.bob.testeilhasoft.apiretrofit.ApiRetrofitService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -71,21 +72,13 @@ public class MovieService {
         });
     }
 
-    public void loadFromDB(final AppDataBase db, final MovieAdapter adapter) {
-        new AsyncTask<Void, Void, List<MovieModel>>() {
-            @Override
-            protected List doInBackground(Void... params) {
-                return db.getMovieDao().getAll();
-            }
+    public void loadFromDB(Context context,final AppDataBase db, final MovieAdapter adapter) {
+        List<Movies> movies = new ArrayList<>();
+        db.getDataBase(context);
+        movies = db.getMovieDao().getAll();
+        if (movies.size() > 0){
 
-            @Override
-            protected void onPostExecute(List movie) {
-                if (db.getMovieDao().getAll().size() > 0) {
-                    MovieResults movieResults = new MovieResults();
-                    movieResults.movies = movie;
-                    adapter.setResults(movieResults);
-                }
-            }
-        }.execute();
+        }
+
     }
 }

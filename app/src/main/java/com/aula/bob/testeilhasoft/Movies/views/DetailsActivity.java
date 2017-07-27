@@ -46,6 +46,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsView{
     String tipo;
     String ano;
     String ator;
+    String imdb;
 
     DetailsPresenter presenter = new DetailsPresenter(this,this);
 
@@ -70,6 +71,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsView{
         tipo = intent.getStringExtra("type");
         ano = intent.getStringExtra("year");
         ator = intent.getStringExtra("actor");
+        imdb = intent.getStringExtra("imdb");
 
         txtSobre.setText(plot);
         txtDiretor.setText(diretor);
@@ -79,7 +81,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsView{
         txtAtor.setText(ator);
         Picasso.with(this).load(image).into(this.imgFilme);
 
-        btnSave.setOnClickListener(presenter.onSaveClick(plot,diretor,autor,nome,tipo,ano,ator));
+        btnSave.setOnClickListener(presenter.onSaveClick(plot,diretor,autor,nome,tipo,ano,ator,imdb));
     }
 
     @Override

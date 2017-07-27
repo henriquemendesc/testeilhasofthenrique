@@ -11,12 +11,24 @@
         android:id="@+id/edtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite Nome do Filme"
-        android:padding="15dp"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Busque online pelo filme"
+        android:inputType="textCapSentences"
         android:maxLines="1"
-        android:inputType="textCapSentences"/>
+        android:padding="15dp" />
+
+    <Button
+        android:id="@+id/btnCadastrados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_click"
+        android:text="Ver Cadastrados"
+        android:visibility="visible"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:textStyle="bold"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_list"
@@ -28,5 +40,4 @@
         tools:listitem="@layout/movie_card">
 
     </android.support.v7.widget.RecyclerView>
-
 </LinearLayout>

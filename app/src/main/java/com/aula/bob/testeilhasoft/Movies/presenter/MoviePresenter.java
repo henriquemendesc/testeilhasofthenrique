@@ -16,6 +16,7 @@ import com.aula.bob.testeilhasoft.Movies.persistence.AppDataBase;
 import com.aula.bob.testeilhasoft.Movies.services.MovieResults;
 import com.aula.bob.testeilhasoft.Movies.services.MovieService;
 import com.aula.bob.testeilhasoft.Movies.views.MovieView;
+import com.aula.bob.testeilhasoft.R;
 import com.aula.bob.testeilhasoft.apiretrofit.ApiRetrofitService;
 
 import java.util.List;
@@ -33,17 +34,18 @@ public class MoviePresenter {
         this.view = view;
         adapter = new MovieAdapter(this);
         service = new MovieService();
-       // view.getSearchText().setOnEditorActionListener(onClickDoneKeyboard());
+        // view.getSearchText().setOnEditorActionListener(onClickDoneKeyboard());
     }
+
     //pesquisa com a api da OMBDapi com o parametro Search, para retornar todas as possíveis respostas de acordo com o nome do filme.
-    public void search(){
+    public void search() {
         view.onProgress();
         String nomeFilme = view.getSearchText().getText().toString();
-        service.moviesSearchResult(view.getContext(),nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
+        service.moviesSearchResult(view.getContext(), nomeFilme, new ApiRetrofitService.MoviesFutureCallback<MovieResults>() {
             @Override
             public void onSuccess(MovieResults movie) {
+                view.getActivity().findViewById(R.id.btnCadastrados).setVisibility(View.GONE);
                 adapter.setResults(movie);
-
                 view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
                 view.getRecyclerView().setHasFixedSize(true);
                 view.getRecyclerView().setAdapter(adapter);
@@ -52,6 +54,7 @@ public class MoviePresenter {
             }
         });
     }
+
     //clique no card para levar à tela de detalhes do filme
     public View.OnClickListener onCardClick(final MovieModel item) {
         return new View.OnClickListener() {
@@ -66,6 +69,7 @@ public class MoviePresenter {
             }
         };
     }
+
     //fecha o teclado após a consulta
     public static void hideSoftKeyboard(Activity activity) {
         try {
@@ -79,7 +83,16 @@ public class MoviePresenter {
         }
     }
 
-    public void loadMovies(AppDataBase db) {
-        service.loadFromDB(db, adapter);
+    public void loadMovies(Context context, AppDataBase db) {
+        service.loadFromDB(context, db, adapter);
+    }
+
+    public View.OnClickListener onClickCadastrados() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View itemView) {
+                view.openCadastrados();
+            }
+        };
     }
 }

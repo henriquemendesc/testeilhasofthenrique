@@ -1,6 +1,7 @@
 package com.aula.bob.testeilhasoft.Movies.presenter;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,21 +21,29 @@ public class DetailsPresenter {
         this.view = view;
     }
 
-    public View.OnClickListener onSaveClick(final String plot, final String diretor, String autor,
-                                            final String nome, final String tipo, final String ano, final String ator) {
+    public View.OnClickListener onSaveClick(final String plot, final String diretor, final String autor,
+                                            final String nome, final String tipo, final String ano, final String ator, final String imdb) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
-                Movies movies = new Movies(id, titlemovie, plotmovie, idimdbmovie, imagemovie, actormovie, yearmovie, typemovie, directormovie, writermovie);
-                movies.setActormovie(ator);
-                movies.setDirectormovie(diretor);
-                movies.setPlotmovie(plot);
-                movies.setTitlemovie(nome);
-                movies.setTypemovie(tipo);
-                movies.setYearmovie(ano);
-//                db.getMovieDao().insertAll(movies);
-                Toast.makeText(view.getContext(),"Inserido com Sucesso",Toast.LENGTH_SHORT).show();
+                db.getDataBase(view.getContext());
+                Movies movies = new Movies(nome,plot,imdb,"",ator,ano,tipo,diretor,autor);
+                new InsertAsyncTask(db).execute(movies);
+
             }
         };
+    }
+
+    private class InsertAsyncTask extends AsyncTask<Movies,Void,Void>{
+        private AppDataBase db;
+        public InsertAsyncTask(AppDataBase appDataBase) {
+            db = appDataBase;
+        }
+
+        @Override
+        protected Void doInBackground(Movies... params) {
+            db.getMovieDao().insertAll(params[0]);
+            return null;
+        }
     }
 }
