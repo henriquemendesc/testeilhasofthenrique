@@ -28,7 +28,7 @@ public class DetailsPresenter {
             @Override
             public void onClick(View itemView) {
                 db = AppDataBase.getDataBase(view.getContext());
-                Movies movies = new Movies(nome,plot,imdb,"",ator,ano,tipo,diretor,autor);
+                Movies movies = new Movies(nome,plot,imdb,"",ator,ano,tipo,diretor,autor);//imagem em branco, deve-se fazer o download e salvar o caminho na base
                 new InsertAsyncTask(db).execute(movies);
                 Toast.makeText(view.getContext(), R.string.insert_success,Toast.LENGTH_SHORT).show();
                 view.getActvity().finish();

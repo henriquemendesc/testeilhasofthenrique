@@ -30,7 +30,7 @@ public class CadastradosPresenter {
         service = new MovieService();
     }
 
-    public void loadFromDB(){
+    public void loadFromDB(){ //deve ser async para que seja feita em outra thread
         db = AppDataBase.getDataBase(view.getContext());
         new AsyncTask<Void, Void, List<Movies>>() {
             @Override
