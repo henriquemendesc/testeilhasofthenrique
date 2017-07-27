@@ -71,14 +71,4 @@ public class MovieService {
             }
         });
     }
-
-    public void loadFromDB(Context context,final AppDataBase db, final MovieAdapter adapter) {
-        List<Movies> movies = new ArrayList<>();
-        db.getDataBase(context);
-        movies = db.getMovieDao().getAll();
-        if (movies.size() > 0){
-
-        }
-
-    }
 }

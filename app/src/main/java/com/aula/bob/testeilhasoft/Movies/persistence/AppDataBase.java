@@ -11,12 +11,12 @@ import android.content.Context;
 @Database(entities = {Movies.class}, version = 1)
 public abstract class AppDataBase extends RoomDatabase {
 
-    public static final String DB_NAME = "MoviesDB";
+    public static final String DB_NAME = "Movies";
     private static AppDataBase INSTANCE;
 
     public static AppDataBase getDataBase(Context context){
         if (INSTANCE == null){
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),AppDataBase.class,"MoviesDB").build();
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),AppDataBase.class,DB_NAME).build();
         }
         return INSTANCE;
     }

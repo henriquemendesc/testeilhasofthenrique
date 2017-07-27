@@ -21,7 +21,7 @@ public interface MovieDao {
     @Update
     void updateAll(Movies... notes);
 
-    @Query("SELECT * FROM movies")
+    @Query("SELECT * FROM moviestb")
     List<Movies> getAll();
 
     @Delete

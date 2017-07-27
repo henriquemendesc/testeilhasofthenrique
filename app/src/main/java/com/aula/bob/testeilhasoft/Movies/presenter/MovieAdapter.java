@@ -45,9 +45,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         ((ViewHolder) holder).setResult(movieModel.get(position));
-        //MovieModel filme = results.get(position);
     }
 
     @Override
@@ -57,6 +55,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public MovieModel getItem(int position) {
         return results.movies.get(position);
+    }
+
+    public void clearList() {
+        movieModel.clear();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

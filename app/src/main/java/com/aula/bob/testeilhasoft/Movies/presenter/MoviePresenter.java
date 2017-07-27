@@ -45,6 +45,7 @@ public class MoviePresenter {
             @Override
             public void onSuccess(MovieResults movie) {
                 view.getActivity().findViewById(R.id.btnCadastrados).setVisibility(View.GONE);
+                view.getActivity().findViewById(R.id.btnClear).setVisibility(View.VISIBLE);
                 adapter.setResults(movie);
                 view.getRecyclerView().setLayoutManager(new LinearLayoutManager(view.getContext()));
                 view.getRecyclerView().setHasFixedSize(true);
@@ -83,15 +84,22 @@ public class MoviePresenter {
         }
     }
 
-    public void loadMovies(Context context, AppDataBase db) {
-        service.loadFromDB(context, db, adapter);
-    }
-
     public View.OnClickListener onClickCadastrados() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
                 view.openCadastrados();
+            }
+        };
+    }
+
+    public View.OnClickListener onClickClear() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.getActivity().findViewById(R.id.btnCadastrados).setVisibility(View.VISIBLE);
+                view.getActivity().findViewById(R.id.btnClear).setVisibility(View.GONE);
+                adapter.clearList();
             }
         };
     }

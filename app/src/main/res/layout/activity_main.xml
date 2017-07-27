@@ -7,8 +7,35 @@
     android:orientation="vertical"
     tools:context="com.aula.bob.testeilhasoft.Movies.views.MainActivity">
 
+    <Button
+        android:id="@+id/btnCadastrados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_click"
+        android:text="Ver Cadastrados"
+        android:padding="15dp"
+        android:visibility="visible"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_click"
+        android:text="Limpar"
+        android:padding="15dp"
+        android:visibility="gone"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:textStyle="bold"/>
+
     <EditText
         android:id="@+id/edtSearch"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -17,18 +44,6 @@
         android:inputType="textCapSentences"
         android:maxLines="1"
         android:padding="15dp" />
-
-    <Button
-        android:id="@+id/btnCadastrados"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_click"
-        android:text="Ver Cadastrados"
-        android:visibility="visible"
-        android:textColor="@color/colorWhite"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:gravity="center_horizontal|center_vertical"
-        android:textStyle="bold"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_list"

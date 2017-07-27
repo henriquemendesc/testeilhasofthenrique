@@ -13,7 +13,7 @@ import android.widget.ImageView;
 /**
  * Created by Bob on 26/07/2017.
  */
-@Entity(tableName = "movies")
+@Entity(tableName = "moviestb")
 public class Movies {
 
     @PrimaryKey(autoGenerate = true)

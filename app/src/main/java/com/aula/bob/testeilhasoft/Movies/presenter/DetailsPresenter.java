@@ -26,10 +26,11 @@ public class DetailsPresenter {
         return new View.OnClickListener() {
             @Override
             public void onClick(View itemView) {
-                db.getDataBase(view.getContext());
+                db = AppDataBase.getDataBase(view.getContext());
                 Movies movies = new Movies(nome,plot,imdb,"",ator,ano,tipo,diretor,autor);
                 new InsertAsyncTask(db).execute(movies);
-
+                Toast.makeText(view.getContext(),"Inserido com sucesso",Toast.LENGTH_SHORT).show();
+                view.getActvity().finish();
             }
         };
     }

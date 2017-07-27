@@ -29,19 +29,27 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     ProgressDialog progress;
     private EditText edtText;
     private Button btnCadastrados;
+    private Button btnClear;
     private AppDataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         presenter = new MoviePresenter(getApplicationContext(), this);
+
         recyclerView = getRecyclerView();
+
         edtText = (EditText)findViewById(R.id.edtSearch);
         edtText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         edtText.setOnEditorActionListener(searchEditListener());
+
         btnCadastrados = (Button)findViewById(R.id.btnCadastrados);
         btnCadastrados.setOnClickListener(presenter.onClickCadastrados());
+
+        btnClear = (Button)findViewById(R.id.btnClear);
+        btnClear.setOnClickListener(presenter.onClickClear());
     }
 
     private TextView.OnEditorActionListener searchEditListener() {
